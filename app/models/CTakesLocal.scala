@@ -1,8 +1,6 @@
 package models
 
 import java.io.FileNotFoundException
-import java.util.HashMap
-
 import org.apache.ctakes.assertion.medfacts.cleartk._
 import org.apache.uima.fit.factory.{AggregateBuilder, AnalysisEngineFactory, ExternalResourceFactory, JCasFactory}
 import org.apache.ctakes.clinicalpipeline.ClinicalPipelineFactory._
@@ -76,15 +74,18 @@ class CTakesLocal {
     jcasInstance.reset()
     outputMap.filter(_.nonEmpty)
   }
+
   def getSchemaMap = {
     Array(Map("name" -> "subject", "display_name" -> "Subject"),
       Map("name" -> "entity_type", "display_name" -> "Entity Type"),
       Map("name" -> "entity", "display_name" -> "Entity"),
       Map("name" -> "polarity", "display_name" -> "Polarity"),
       Map("name" -> "ICD9CM", "display_name" -> "ICD9CM"),
+      Map("name" -> "LOINC", "display_name" -> "LOINC"),
       Map("name" -> "RXNORM", "display_name" -> "RXNORM")
     ).map{map => mapAsJavaMap(map)}
   }
+
   def getPipeline={
     val builder = new AggregateBuilder
     builder.add(getTokenProcessingPipeline)
@@ -104,8 +105,8 @@ class CTakesLocal {
     builder.add(SubjectCleartkAnalysisEngine.createAnnotatorDescription)
     builder.createAggregateDescription
     builder
-  }
-}
+  }}
+
 object CTakesLocal{
   val ctakesLocal = new CTakesLocal
   def apply(): CTakesLocal = ctakesLocal

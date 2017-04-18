@@ -1,13 +1,11 @@
 package controllers
 
-import java.util
-import java.util.HashMap
-
 import play.api.mvc.{Action, Controller}
 import play.libs.Json
-import models.CTakesLocal
-import play.api.libs.json.{JsObject, JsResult, JsValue}
+import models.{CTakesLocal, PatternMatch}
+
 import scala.collection.JavaConversions._
+import models.PatternMatch._
 
 object Application extends Controller {
 
@@ -25,14 +23,18 @@ object Application extends Controller {
     val clinicalText = (clinicalJson \ "text").as[String]
     val outputMapList = CTakesLocal().getCodeMap(clinicalText)
     println(outputMapList)
+    val patternMatchMap = PatternMatch.getPatternMatchMap(clinicalText)
+    val combinedMapList = outputMapList ++ patternMatchMap
+    println(patternMatchMap)
     val schemaMapArray = CTakesLocal().getSchemaMap
-    val outputMap = mapAsJavaMap(Map("data" -> outputMapList.toArray, "schema" -> schemaMapArray))
+    val outputMap = mapAsJavaMap(Map("data" -> combinedMapList.toArray, "schema" -> schemaMapArray))
     Ok(Json.stringify(Json.toJson(outputMap)))
       .withHeaders("Access-Control-Allow-Origin" -> "*",
       "Access-Control-Expose-Headers" -> "WWW-Authenticate, Server-Authorization",
       "Access-Control-Allow-Methods" -> "POST, GET, OPTIONS, PUT, DELETE",
       "Access-Control-Allow-Headers" -> "x-requested-with,content-type,Cache-Control,Pragma,Date,Authorization")
   }
+
   def preflight(all: String) = Action {
     Ok("").withHeaders("Access-Control-Allow-Origin" -> "*", "Allow" -> "*",
       "Access-Control-Allow-Methods" -> "POST, GET, PUT, DELETE, OPTIONS", "Access-Control-Allow-Headers" ->
