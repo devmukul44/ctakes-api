@@ -33,4 +33,10 @@ object Application extends Controller {
       "Access-Control-Allow-Methods" -> "POST, GET, OPTIONS, PUT, DELETE",
       "Access-Control-Allow-Headers" -> "x-requested-with,content-type,Cache-Control,Pragma,Date,Authorization")
   }
+  def preflight(all: String) = Action {
+    Ok("").withHeaders("Access-Control-Allow-Origin" -> "*", "Allow" -> "*",
+      "Access-Control-Allow-Methods" -> "POST, GET, PUT, DELETE, OPTIONS", "Access-Control-Allow-Headers" ->
+        "Origin, X-Requested-With, Content-Type, Accept, Referrer, User-Agent, Authorization"
+    )
+  }
 }
