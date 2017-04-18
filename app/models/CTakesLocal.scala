@@ -31,9 +31,21 @@ class CTakesLocal {
     val outputMap = identifiedAnnotationList.filter(annotation => annotation.getOntologyConceptArr != null)
       .map(annotation => {
         val coveredText = annotation.getCoveredText
-        val textType = annotation.getType.getShortName
-        val polarity = annotation.getPolarity.toString
-        val subject = annotation.getSubject
+        val textType = annotation.getType.getShortName match {
+          case "ProcedureMention" => "Procedure"
+          case "DiseaseDisorderMention" => "Disease Disorder"
+          case "MedicationMention" => "Medication"
+          case "AnatomicalSiteMention" => "Anatomical Site"
+          case "SignSymptomMention" => "Sign Symptom"
+          case _ => annotation.getType.getShortName
+        }
+        val polarity = if(annotation.getPolarity.toString == "-1") "Negative" else "Positive"
+        val subject = annotation.getSubject match {
+          case "patient" => "Patient"
+          case "family_member" => "Family Member"
+          case "other" => "Other"
+          case _ => annotation.getSubject
+        }
         val endAddress = annotation.getEnd
         val beginAddress = annotation.getBegin
         val featureStructureArray = annotation.getOntologyConceptArr
@@ -50,9 +62,9 @@ class CTakesLocal {
                 x
             }
           }
-        val codeMap = codeList.groupBy(codeTuple => codeTuple._1).map(groupedCodes => (groupedCodes._1, groupedCodes._2.map(y => y._2)))
-        val codeStringMap = codeMap.map{map => (map._1, map._2.mkString(","))}
-        val filteredCodeMap = codeStringMap.filter(x => x._1 != "SNOMEDCT")
+        val codeMap = codeList.groupBy(codeTuple => codeTuple._1).map(groupedCodes => (groupedCodes._1, groupedCodes._2.map(y => y._2).distinct))
+        val codeStringMap = codeMap.map{map => (map._1, map._2.mkString(", "))}
+        val filteredCodeMap = codeStringMap.filter(x => x._1 != "SNOMEDCT" && x._1 != "ICD10PCS")
         if(filteredCodeMap.nonEmpty) {
           val addressMap = mapAsJavaMap(Map("start" -> beginAddress, "end" -> endAddress))
           val combinedMap = Map("entity" -> coveredText, "entity_type" -> textType, "polarity" -> polarity, "subject" -> subject, "position" -> addressMap) ++ filteredCodeMap
@@ -66,11 +78,9 @@ class CTakesLocal {
   }
   def getSchemaMap = {
     Array(Map("name" -> "subject", "display_name" -> "Subject"),
-      Map("name" -> "position", "display_name" -> "Position"),
       Map("name" -> "entity_type", "display_name" -> "Entity Type"),
       Map("name" -> "entity", "display_name" -> "Entity"),
       Map("name" -> "polarity", "display_name" -> "Polarity"),
-      Map("name" -> "ICD10PCS", "display_name" -> "ICD10PCS"),
       Map("name" -> "ICD9CM", "display_name" -> "ICD9CM"),
       Map("name" -> "RXNORM", "display_name" -> "RXNORM")
     ).map{map => mapAsJavaMap(map)}
