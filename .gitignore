@@ -16,3 +16,4 @@ dist
 /.settings
 conf/org
 conf/META-INF
+/custom_lib

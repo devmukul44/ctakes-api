@@ -2,10 +2,8 @@ package controllers
 
 import play.api.mvc.{Action, Controller}
 import play.libs.Json
-import models.{CTakesLocal, PatternMatch}
-
+import models.{CTakesLocal}
 import scala.collection.JavaConversions._
-import models.PatternMatch._
 
 object Application extends Controller {
 
@@ -18,17 +16,21 @@ object Application extends Controller {
       "Access-Control-Allow-Headers" -> "x-requested-with,content-type,Cache-Control,Pragma,Date,Authorization")
   }
 
-  def postTest = Action { implicit request =>
+  def ctakesRoute = Action { implicit request =>
     val clinicalJson = request.body.asJson.get
     val clinicalText = (clinicalJson \ "text").as[String]
     val outputMapList = CTakesLocal().getCodeMap(clinicalText)
-    println(outputMapList)
-    val patternMatchMap = PatternMatch.getPatternMatchMap(clinicalText)
-    val combinedMapList = outputMapList ++ patternMatchMap
-    println(patternMatchMap)
     val schemaMapArray = CTakesLocal().getSchemaMap
-    val outputMap = mapAsJavaMap(Map("data" -> combinedMapList.toArray, "schema" -> schemaMapArray))
-    Ok(Json.stringify(Json.toJson(outputMap)))
+    println(outputMapList)
+
+    val orderList = List("Procedure", "Disease Disorder", "Medication", "Anatomical Site", "Sign Symptom")
+    val orderedOutputMapList = orderList.flatMap{entityType =>
+      outputMapList.filter(map => map.get("entity_type").equals(entityType))}
+    val filteredOutMapList = outputMapList.filter(map => !orderList.contains(map.get("entity_type")))
+    val finalOrderedMapList = orderedOutputMapList ++ filteredOutMapList
+
+    val combinedOutputMap = mapAsJavaMap(Map("data" -> finalOrderedMapList.toArray, "schema" -> schemaMapArray))
+    Ok(Json.stringify(Json.toJson(combinedOutputMap)))
       .withHeaders("Access-Control-Allow-Origin" -> "*",
       "Access-Control-Expose-Headers" -> "WWW-Authenticate, Server-Authorization",
       "Access-Control-Allow-Methods" -> "POST, GET, OPTIONS, PUT, DELETE",

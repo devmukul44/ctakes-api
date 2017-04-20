@@ -1,15 +1,9 @@
 package models
 
-import java.io.FileNotFoundException
-import org.apache.ctakes.assertion.medfacts.cleartk._
-import org.apache.uima.fit.factory.{AggregateBuilder, AnalysisEngineFactory, ExternalResourceFactory, JCasFactory}
+import org.apache.uima.fit.factory.{AnalysisEngineFactory, JCasFactory}
 import org.apache.ctakes.clinicalpipeline.ClinicalPipelineFactory._
-import org.apache.ctakes.core.resource.{FileLocator, FileResourceImpl}
-import org.apache.ctakes.dependency.parser.ae.ClearNLPDependencyParserAE
-import org.apache.ctakes.dictionary.lookup2.ae.{AbstractJCasTermAnnotator, DefaultJCasTermAnnotator, JCasTermAnnotator}
 import org.apache.ctakes.typesystem.`type`.textsem.IdentifiedAnnotation
 import org.apache.uima.fit.util.JCasUtil
-import org.apache.uima.resource.ResourceInitializationException
 
 import scala.collection.JavaConverters._
 import scala.collection.JavaConversions._
@@ -17,14 +11,14 @@ import scala.collection.JavaConversions._
   * Created by Mukul Dev on 14/4/17.
   */
 class CTakesLocal {
-  val analysisEngineDescription = getPipeline
-  val analysisEngine=analysisEngineDescription.createAggregate()
-  val jcasInstance = analysisEngine.newJCas()
+  val pipeline = getFastPipeline()
+  val analysisEngineDescription = AnalysisEngineFactory.createEngineDescription(pipeline)
+  val engine = AnalysisEngineFactory.createEngine(analysisEngineDescription)
+  val jcasInstance = JCasFactory.createJCas()
 
   def getCodeMap(clinicalText: String) = {
     jcasInstance.setDocumentText(clinicalText)
-    analysisEngine.process(jcasInstance)
-
+    engine.process(jcasInstance)
     val identifiedAnnotationList = JCasUtil.select(jcasInstance, new IdentifiedAnnotation(jcasInstance).getClass).iterator().asScala.toList
     val outputMap = identifiedAnnotationList.filter(annotation => annotation.getOntologyConceptArr != null)
       .map(annotation => {
@@ -35,6 +29,7 @@ class CTakesLocal {
           case "MedicationMention" => "Medication"
           case "AnatomicalSiteMention" => "Anatomical Site"
           case "SignSymptomMention" => "Sign Symptom"
+          case "EntityMention" => "Entity"
           case _ => annotation.getType.getShortName
         }
         val polarity = if(annotation.getPolarity.toString == "-1") "Negative" else "Positive"
@@ -62,7 +57,12 @@ class CTakesLocal {
           }
         val codeMap = codeList.groupBy(codeTuple => codeTuple._1).map(groupedCodes => (groupedCodes._1, groupedCodes._2.map(y => y._2).distinct))
         val codeStringMap = codeMap.map{map => (map._1, map._2.mkString(", "))}
-        val filteredCodeMap = codeStringMap.filter(x => x._1 != "SNOMEDCT" && x._1 != "ICD10PCS")
+        val filteredCodeMap = codeStringMap.filter(x => x._1 != "SNOMEDCT_US_2016_09_01" &&
+          x._1 != "SNOMEDCT_VET_2016_04_01" &&
+          x._1 != "CCS_10_2016" &&
+          x._1 != "CCS2005" &&
+          x._1 != "HCPT2016"
+        )
         if(filteredCodeMap.nonEmpty) {
           val addressMap = mapAsJavaMap(Map("start" -> beginAddress, "end" -> endAddress))
           val combinedMap = Map("entity" -> coveredText, "entity_type" -> textType, "polarity" -> polarity, "subject" -> subject, "position" -> addressMap) ++ filteredCodeMap
@@ -80,33 +80,20 @@ class CTakesLocal {
       Map("name" -> "entity_type", "display_name" -> "Entity Type"),
       Map("name" -> "entity", "display_name" -> "Entity"),
       Map("name" -> "polarity", "display_name" -> "Polarity"),
-      Map("name" -> "ICD9CM", "display_name" -> "ICD9CM"),
-      Map("name" -> "LOINC", "display_name" -> "LOINC"),
-      Map("name" -> "RXNORM", "display_name" -> "RXNORM")
+      Map("name" -> "ICD9CM_2014", "display_name" -> "ICD9CM"),
+      Map("name" -> "ICD10CM_2017", "display_name" -> "ICD10CM"),
+      Map("name" -> "ICD10PCS_2017", "display_name" -> "ICD10PCS"),
+      Map("name" -> "CPT2016", "display_name" -> "CPT"),
+      Map("name" -> "HCPCS2016", "display_name" -> "HCPCS"),
+      Map("name" -> "LNC256", "display_name" -> "LOINC"),
+      Map("name" -> "RXNORM_16AA_160906F", "display_name" -> "RXNORM")
     ).map{map => mapAsJavaMap(map)}
   }
+}
 
-  def getPipeline={
-    val builder = new AggregateBuilder
-    builder.add(getTokenProcessingPipeline)
-    try
-      builder.add(AnalysisEngineFactory.createEngineDescription(classOf[DefaultJCasTermAnnotator], AbstractJCasTermAnnotator.PARAM_WINDOW_ANNOT_PRP, "org.apache.ctakes.typesystem.type.textspan.Sentence", JCasTermAnnotator.DICTIONARY_DESCRIPTOR_KEY, ExternalResourceFactory.createExternalResourceDescription(classOf[FileResourceImpl], FileLocator.locateFile("org/apache/ctakes/dictionary/lookup/fast/cTakesHsql.xml"))))
-    catch {
-      case e: FileNotFoundException =>
-        e.printStackTrace()
-        throw new ResourceInitializationException(e)
-    }
-    builder.add(ClearNLPDependencyParserAE.createAnnotatorDescription)
-    builder.add(PolarityCleartkAnalysisEngine.createAnnotatorDescription)
-    builder.add(UncertaintyCleartkAnalysisEngine.createAnnotatorDescription)
-    builder.add(HistoryCleartkAnalysisEngine.createAnnotatorDescription)
-    builder.add(ConditionalCleartkAnalysisEngine.createAnnotatorDescription)
-    builder.add(GenericCleartkAnalysisEngine.createAnnotatorDescription)
-    builder.add(SubjectCleartkAnalysisEngine.createAnnotatorDescription)
-    builder.createAggregateDescription
-    builder
-  }}
-
+/** Factory for CTakesLocal
+  *
+  */
 object CTakesLocal{
   val ctakesLocal = new CTakesLocal
   def apply(): CTakesLocal = ctakesLocal

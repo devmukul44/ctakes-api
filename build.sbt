@@ -16,44 +16,52 @@ libraryDependencies += "org.apache.opennlp" % "opennlp-uima" % "1.5.3"
 
 libraryDependencies += "org.apache.uima" % "uimaj-core" % "2.4.0"
 
-libraryDependencies += "org.apache.ctakes" % "ctakes-dictionary-lookup" % "3.2.2"
+libraryDependencies += "com.googlecode.clearnlp" % "clearnlp" % "1.3.0"
 
-libraryDependencies += "org.apache.ctakes" % "ctakes-utils" % "3.2.2"
+libraryDependencies += "org.cleartk" % "cleartk-ml-liblinear" % "2.0.0"
 
-libraryDependencies += "org.apache.ctakes" % "ctakes-core-res" % "3.2.2"
+unmanagedBase := baseDirectory.value / "custom_lib"
 
-libraryDependencies += "org.apache.ctakes" % "ctakes-dictionary-lookup" % "3.2.2"
+//libraryDependencies += "com.google.guava" % "guava" % "18.0"
 
-libraryDependencies += "org.apache.ctakes" % "ctakes-dictionary-lookup" % "3.2.2"
-
-libraryDependencies += "org.apache.ctakes" % "ctakes-dictionary-lookup-res" % "3.2.2"
-
-libraryDependencies += "org.apache.ctakes" % "ctakes-dictionary-lookup-fast" % "3.2.2"
-
-libraryDependencies += "org.apache.ctakes" % "ctakes-dictionary-lookup-fast-res" % "3.2.2"
-
-libraryDependencies += "org.apache.ctakes" % "ctakes-drug-ner" % "3.2.2"
-
-libraryDependencies += "org.apache.ctakes" % "ctakes-drug-ner-res" % "3.2.2"
-
-libraryDependencies += "org.apache.ctakes" % "ctakes-side-effect" % "3.2.2"
-
-libraryDependencies += "org.apache.ctakes" % "ctakes-side-effect-res" % "3.2.2"
-
-libraryDependencies += "org.apache.ctakes" % "ctakes-dependency-parser" % "3.2.2"
-
-libraryDependencies += "org.apache.ctakes" % "ctakes-ytex" % "3.2.2"
-
-libraryDependencies += "org.apache.ctakes" % "ctakes-ytex-res" % "3.2.2"
-
-libraryDependencies += "org.apache.ctakes" % "ctakes-ytex-uima" % "3.2.2"
-
-libraryDependencies += "org.apache.ctakes" % "ctakes-dictionary-lookup-res" % "3.2.2"
-
-libraryDependencies += "org.apache.ctakes" % "ctakes-dictionary-lookup-fast" % "3.2.2"
-
-libraryDependencies += "org.apache.ctakes" % "ctakes-dictionary-lookup-fast-res" % "3.2.2"
-
-libraryDependencies += "org.apache.ctakes" % "ctakes-ytex-uima" % "3.2.2"
-
-libraryDependencies += "org.apache.ctakes" % "ctakes-clinical-pipeline" % "3.2.2"
+//libraryDependencies += "org.apache.ctakes" % "ctakes-dictionary-lookup" % "3.2.2"
+//
+//libraryDependencies += "org.apache.ctakes" % "ctakes-utils" % "3.2.2"
+//
+//libraryDependencies += "org.apache.ctakes" % "ctakes-core-res" % "3.2.2"
+//
+//libraryDependencies += "org.apache.ctakes" % "ctakes-dictionary-lookup" % "3.2.2"
+//
+//libraryDependencies += "org.apache.ctakes" % "ctakes-dictionary-lookup" % "3.2.2"
+//
+//libraryDependencies += "org.apache.ctakes" % "ctakes-dictionary-lookup-res" % "3.2.2"
+//
+//libraryDependencies += "org.apache.ctakes" % "ctakes-dictionary-lookup-fast" % "3.2.2"
+//
+//libraryDependencies += "org.apache.ctakes" % "ctakes-dictionary-lookup-fast-res" % "3.2.2"
+//
+//libraryDependencies += "org.apache.ctakes" % "ctakes-drug-ner" % "3.2.2"
+//
+//libraryDependencies += "org.apache.ctakes" % "ctakes-drug-ner-res" % "3.2.2"
+//
+//libraryDependencies += "org.apache.ctakes" % "ctakes-side-effect" % "3.2.2"
+//
+//libraryDependencies += "org.apache.ctakes" % "ctakes-side-effect-res" % "3.2.2"
+//
+//libraryDependencies += "org.apache.ctakes" % "ctakes-dependency-parser" % "3.2.2"
+//
+//libraryDependencies += "org.apache.ctakes" % "ctakes-ytex" % "3.2.2"
+//
+//libraryDependencies += "org.apache.ctakes" % "ctakes-ytex-res" % "3.2.2"
+//
+//libraryDependencies += "org.apache.ctakes" % "ctakes-ytex-uima" % "3.2.2"
+//
+//libraryDependencies += "org.apache.ctakes" % "ctakes-dictionary-lookup-res" % "3.2.2"
+//
+//libraryDependencies += "org.apache.ctakes" % "ctakes-dictionary-lookup-fast" % "3.2.2"
+//
+//libraryDependencies += "org.apache.ctakes" % "ctakes-dictionary-lookup-fast-res" % "3.2.2"
+//
+//libraryDependencies += "org.apache.ctakes" % "ctakes-ytex-uima" % "3.2.2"
+//
+//libraryDependencies += "org.apache.ctakes" % "ctakes-clinical-pipeline" % "3.2.2"
