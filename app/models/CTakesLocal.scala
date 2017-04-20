@@ -57,12 +57,23 @@ class CTakesLocal {
           }
         val codeMap = codeList.groupBy(codeTuple => codeTuple._1).map(groupedCodes => (groupedCodes._1, groupedCodes._2.map(y => y._2).distinct))
         val codeStringMap = codeMap.map{map => (map._1, map._2.mkString(", "))}
-        val filteredCodeMap = codeStringMap.filter(x => x._1 != "SNOMEDCT_US_2016_09_01" &&
-          x._1 != "SNOMEDCT_VET_2016_04_01" &&
-          x._1 != "CCS_10_2016" &&
-          x._1 != "CCS2005" &&
-          x._1 != "HCPT2016"
-        )
+        val filteredCodeMap =  if(textType == "Anatomical Site") {
+          codeStringMap.filter(x => x._1 != "SNOMEDCT_US_2016_09_01" &&
+            x._1 != "SNOMEDCT_VET_2016_04_01" &&
+            x._1 != "CCS_10_2016" &&
+            x._1 != "CCS2005" &&
+            x._1 != "HCPT2016" &&
+            x._1 != "LNC256"
+          )
+        }
+        else {
+          codeStringMap.filter(x => x._1 != "SNOMEDCT_US_2016_09_01" &&
+            x._1 != "SNOMEDCT_VET_2016_04_01" &&
+            x._1 != "CCS_10_2016" &&
+            x._1 != "CCS2005" &&
+            x._1 != "HCPT2016"
+          )
+        }
         if(filteredCodeMap.nonEmpty) {
           val addressMap = mapAsJavaMap(Map("start" -> beginAddress, "end" -> endAddress))
           val combinedMap = Map("entity" -> coveredText, "entity_type" -> textType, "polarity" -> polarity, "subject" -> subject, "position" -> addressMap) ++ filteredCodeMap
