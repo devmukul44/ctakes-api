@@ -2,7 +2,7 @@ package controllers
 
 import play.api.mvc.{Action, Controller}
 import play.libs.Json
-import models.{CTakesLocal}
+import models.{CTakesLocal, PatternMatching}
 import scala.collection.JavaConversions._
 
 object Application extends Controller {
@@ -19,9 +19,10 @@ object Application extends Controller {
   def ctakesRoute = Action { implicit request =>
     val clinicalJson = request.body.asJson.get
     val clinicalText = (clinicalJson \ "text").as[String]
-    val outputMapList = CTakesLocal().getCodeMap(clinicalText)
+//    val outputMapList = CTakesLocal().getCodeMap(clinicalText)
+    val outputMapList = PatternMatching.getValueApendedMap(clinicalText) ++ PatternMatching.getLVEFOutputMap(clinicalText)
     val schemaMapArray = CTakesLocal().getSchemaMap
-    println(outputMapList)
+    println(outputMapList.toList)
 
     val orderList = List("Procedure", "Disease Disorder", "Medication", "Anatomical Site", "Sign Symptom")
     val orderedOutputMapList = orderList.flatMap{entityType =>

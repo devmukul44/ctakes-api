@@ -11,7 +11,7 @@ import scala.collection.JavaConversions._
   * Created by Mukul Dev on 14/4/17.
   */
 class CTakesLocal {
-  val pipeline = getFastPipeline()
+  val pipeline = getFastPipeline
   val analysisEngineDescription = AnalysisEngineFactory.createEngineDescription(pipeline)
   val engine = AnalysisEngineFactory.createEngine(analysisEngineDescription)
   val jcasInstance = JCasFactory.createJCas()
@@ -21,7 +21,7 @@ class CTakesLocal {
     engine.process(jcasInstance)
     val identifiedAnnotationList = JCasUtil.select(jcasInstance, new IdentifiedAnnotation(jcasInstance).getClass).iterator().asScala.toList
     val outputMap = identifiedAnnotationList.filter(annotation => annotation.getOntologyConceptArr != null)
-      .map { annotation =>
+      .map{ annotation =>
         val coveredText = annotation.getCoveredText
         val textType = annotation.getType.getShortName match {
           case "ProcedureMention" => "Procedure"
@@ -80,11 +80,11 @@ class CTakesLocal {
     Array(Map("name" -> "subject", "display_name" -> "Subject"),
       Map("name" -> "entity_type", "display_name" -> "Entity Type"),
       Map("name" -> "entity", "display_name" -> "Entity"),
-      Map("name" -> "polarity", "display_name" -> "Polarity"),
       Map("name" -> "preferredText", "display_name" -> "Standardized Text"),
+      Map("name" -> "polarity", "display_name" -> "Polarity"),
+      Map("name" -> "value", "display_name" -> "Value"),
       Map("name" -> "ICD9CM_2014", "display_name" -> "ICD9CM"),
       Map("name" -> "ICD10CM_2017", "display_name" -> "ICD10CM"),
-      Map("name" -> "ICD10PCS_2017", "display_name" -> "ICD10PCS"),
       Map("name" -> "CPT2016", "display_name" -> "CPT"),
       Map("name" -> "HCPCS2016", "display_name" -> "HCPCS"),
       Map("name" -> "LNC256", "display_name" -> "LOINC"),
