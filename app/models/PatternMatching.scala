@@ -33,8 +33,7 @@ object PatternMatching {
         val entity = clinicalText.substring(startIndex, endIndex)
         val pattern = new Regex("""\d+""")
         val valueString = pattern.findAllIn(clinicalText).mkString(",")
-        val valueMap =  mapAsJavaMap(Map("value" -> valueString))
-        val tempMap = Map("entity" -> entity, "entity_type" -> "Entity", "polarity" -> "Positive", "subject" -> "Patient", "position" -> positionMap, "LOINC" -> "10230-1", "value" -> valueMap, "preferredText" -> "Left ventricular ejection fraction")
+        val tempMap = Map("entity" -> entity, "entity_type" -> "Entity", "polarity" -> "Positive", "subject" -> "Patient", "position" -> positionMap, "LNC256" -> "10230-1", "value" -> valueString, "preferredText" -> "Left ventricular ejection fraction")
         padLength = padLength + ct.length + 1
         mapAsJavaMap(tempMap)
       }
