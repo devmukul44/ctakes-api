@@ -42,7 +42,8 @@ class CTakesLocal {
         val endAddress = annotation.getEnd
         val beginAddress = annotation.getBegin
         val featureStructureArray = annotation.getOntologyConceptArr
-        val codeList = featureStructureArray.toArray
+
+        val ctakesCodeList = featureStructureArray.toArray
           .map { featureStructure =>
             val featureList = featureStructure.getType.getFeatures.asScala.toList
             val temp: (String, String) = ("", "")
@@ -55,6 +56,9 @@ class CTakesLocal {
                 x
             }
           }
+        val umlsCodeMapList = UMLSCodeMap().getUMLSCodeMap(coveredText).toArray
+
+        val codeList = ctakesCodeList ++ umlsCodeMapList
         val preferredTextList = featureStructureArray.toArray
           .flatMap{featureStructure =>
             val featureList = featureStructure.getType.getFeatures.asScala.toList
@@ -67,6 +71,7 @@ class CTakesLocal {
         val preferredText = preferredTextList.groupBy(_._1).map(preferredTextTuple => (preferredTextTuple._1, preferredTextList.map(_._2).distinct))
         val preferredTextString = preferredText.map { map => (map._1, map._2.mkString(", ")) }
         val codeMap = codeList.groupBy(codeTuple => codeTuple._1).map(groupedCodes => (groupedCodes._1, groupedCodes._2.map(y => y._2).distinct))
+
         val codeStringMap = codeMap.map { map => (map._1, map._2.mkString(", ")) }
         val addressMap = mapAsJavaMap(Map("start" -> beginAddress, "end" -> endAddress))
         val combinedMap = Map("entity" -> coveredText, "entity_type" -> textType, "polarity" -> polarity, "subject" -> subject, "position" -> addressMap) ++ codeStringMap ++ preferredTextString

@@ -2,8 +2,9 @@ package controllers
 
 import play.api.mvc.{Action, Controller}
 import play.libs.Json
-import models.{CTakesLocal, PatternMatching}
+import models.{CTakesLocal, PatternMatching, UMLSCodeMap}
 import scala.collection.JavaConversions._
+
 
 object Application extends Controller {
 
@@ -36,6 +37,11 @@ object Application extends Controller {
       "Access-Control-Expose-Headers" -> "WWW-Authenticate, Server-Authorization",
       "Access-Control-Allow-Methods" -> "POST, GET, OPTIONS, PUT, DELETE",
       "Access-Control-Allow-Headers" -> "x-requested-with,content-type,Cache-Control,Pragma,Date,Authorization")
+  }
+
+  def elasticTryRoute = Action{
+    val responseText = UMLSCodeMap().getUMLSCodeMap("para")
+    Ok(responseText.toString)
   }
 
   def preflight(all: String) = Action {

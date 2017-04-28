@@ -6,7 +6,7 @@ target
 tmp
 .history
 dist
-/.idea
+/.`
 /*.iml
 /out
 /.idea_modules
@@ -15,5 +15,7 @@ dist
 /RUNNING_PID
 /.settings
 conf/org
+conf/resources
 conf/META-INF
 /custom_lib
+.idea/
