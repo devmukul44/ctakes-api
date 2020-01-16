@@ -1,0 +1,182 @@
+Patient is at high risk for heart failure but does not have structural heart disease or symptoms of heart failure. Patient is ACC/AHA stage A. Measures include treat hypertension and encourage smoking cessation. Initial daily dose includes Captopril 6 mg. 
+ 
+ 
+Subject,Entity Type,Entity,Standardized Text,Polarity,Value,ICD9CM,ICD10CM,CPT,HCPCS,LOINC,RXNORM
+Patient,Procedure,treat,Therapeutic procedure,Positive,,,,97139,,MTHU021207, LP100632-1, LP94823-9, MTHU021209, LP21090-3,,
+Patient,Disease Disorder,heart failure,Heart failure, Congestive heart failure,Positive,,428, 428.9, 428.0,I50, I50.9,,,MTHU020787, LA12740-9,,
+Patient,Disease Disorder,heart,benign neoplasm of heart, Malignant neoplasm of heart,Positive,,212.7, 164.1,D15.1, C38.0,,,,,
+Patient,Disease Disorder,heart disease,Heart Diseases,Negative,,429.9,I51.9,,,LA10523-1,,
+Patient,Disease Disorder,heart,benign neoplasm of heart, Malignant neoplasm of heart,Positive,,212.7, 164.1,D15.1, C38.0,,,,,
+Patient,Disease Disorder,disease,Disease,Positive,,,,,,LP21006-9,,
+Patient,Disease Disorder,heart failure,Heart failure, Congestive heart failure,Positive,,428, 428.9, 428.0,I50, I50.9,,,MTHU020787, LA12740-9,,
+Patient,Disease Disorder,heart,benign neoplasm of heart, Malignant neoplasm of heart,Negative,,212.7, 164.1,D15.1, C38.0,,,,,
+Patient,Disease Disorder,ACC,Aplasia Cutis Congenita, Agenesis of corpus callosum,Positive,,,Q84.8, Q04.0,,,,,
+Patient,Disease Disorder,hypertension,Hypertensive disease,Positive,,997.91, 401-405.99,,,,LA14293-7, LA7444-8, MTHU020789,,
+Patient,Medication,AHA,acetohydroxamic acid, Alpha Hydroxy Acids,Positive,,,,,,,16728, 236797,
+Patient,Medication,Captopril,Captopril,Positive,6,,,,,LP18914-9, MTHU006862, LP32689-9,1998,
+Patient,Sign Symptom,symptoms,Symptoms,Negative,,780-789.99,,,,LP100630-5, MTHU021540, LP185406-8, MTHU048142,,
+
+Patient has a family history of dilated cardiomyopathy and is to be screened with a comprehensive history and physical examination together with echocardiography and transthoracic echocardiography every 2-5 years. Patient is high risk for heart failure. Measures include treat lipid disorders and encourage regular exercise. Maximum daily dose of Fosinopril is 40 mg once
+ 
+ 
+Subject,Entity Type,Entity,Standardized Text,Polarity,Value,ICD9CM,ICD10CM,CPT,HCPCS,LOINC,RXNORM
+Patient,Procedure,echocardiography,Echocardiography,Positive,2,5,88.72,,1013050,,LA11845-7, LP6171-5, LA7215-2,,
+Patient,Procedure,echocardiography,Echocardiography,Positive,2,5,88.72,,1013050,,LP6171-5, LA7215-2, LA11845-7,,
+Patient,Disease Disorder,dilated cardiomyopathy,Cardiomyopathy, Dilated,Positive,2,5,,I42.0,,,,,
+Patient,Disease Disorder,cardiomyopathy,Cardiomyopathies,Positive,2,5,425,I42, I51.5, I42.9,,,MTHU040649, LP128708-7,,
+Patient,Disease Disorder,heart failure,Heart failure, Congestive heart failure,Positive,,428, 428.9, 428.0,I50, I50.9,,,LA12740-9, MTHU020787,,
+Patient,Disease Disorder,heart,benign neoplasm of heart, Malignant neoplasm of heart,Positive,,212.7, 164.1,D15.1, C38.0,,,,,
+Patient,Disease Disorder,lipid disorders,Lipid Metabolism Disorders,Positive,,272, 272.9,,,,,,
+Patient,Disease Disorder,disorders,Disease,Positive,,,,,,LP21006-9,,
+Patient,Medication,lipid,Lipids,Positive,,,,,,MTHU003688, LA12903-3, LP15705-4,,
+Patient,Medication,Fosinopril,Fosinopril,Positive,40,,,,,LP171400-7,50166,
+Patient,Sign Symptom,history,Medical History,Positive,2,5,,,,,LP6817-3, LP128548-7, LP91302-7, LP7800-8, MTHU040244, MTHU000077,,
+Patient,Sign Symptom,dilated,Dilated,Positive,2,5,,,,,LA19576-0,,
+Patient,Sign Symptom,history,Medical History,Positive,2,5,,,,,LP91302-7, LP7800-8, MTHU040244, MTHU000077, LP6817-3, LP128548-7,,
+Patient,Sign Symptom,physical,Physical assessment findings,Positive,2,5,,,,,LP7801-6, MTHU000078,,
+Patient,Entity,physical,Physical Examination,Positive,2,5,89.7,,1014526,,MTHU028014, LP100621-4, LP100622-2,,
+Patient,Entity,examination,Physical Examination,Positive,2,5,89.7,,1014526,,LP100622-2, MTHU028014, LP100621-4,,
+
+Patient is asymptomatic with LV dysfunction from previous MI, LV remodeling from LV hypertrophy. In addition to the heart failure education and aggressive risk factor modification used for stage A, treatment with an ACEI/ARB and/or beta-blockade is indicated. Initial daily dose includes Enalapril 2 mg twice. Maximum daily dose of Captopril includes 50 mg.
+ 
+ 
+Subject,Entity Type,Entity,Standardized Text,Polarity,Value,ICD9CM,ICD10CM,CPT,HCPCS,LOINC,RXNORM
+Patient,Procedure,treatment,Administration procedure, Therapeutic procedure,Positive,,,,97139,,LA20296-2, LP21090-3, MTHU021207, LP100632-1, LP94823-9, MTHU021209,,
+Patient,Disease Disorder,LV hypertrophy,Left Ventricular Hypertrophy,Positive,,,,,,LP156346-1, MTHU044660,,
+Patient,Disease Disorder,heart failure,Heart failure, Congestive heart failure,Positive,,428.9, 428, 428.0,I50.9, I50,,,MTHU020787, LA12740-9,,
+Patient,Disease Disorder,heart,benign neoplasm of heart, Malignant neoplasm of heart,Positive,,212.7, 164.1,D15.1, C38.0,,,,,
+Patient,Medication,blockade,Blockade,Positive,,,,,,,1423936,
+Patient,Medication,Enalapril,Enalapril,Positive,2,,,,,LP171394-2,3827,
+Patient,Medication,Captopril,Captopril,Positive,50,,,,,LP32689-9, LP18914-9, MTHU006862,1998,
+Patient,Sign Symptom,asymptomatic,Asymptomatic,Positive,,,,,,LA6737-6,,
+Patient,Sign Symptom,hypertrophy,Hypertrophy,Positive,,,,,,LP31563-7, MTHU024506,,
+
+Patient is diagnosed with asymptomatic valvular dysfunction. Evaluation for coronary revascularization either percutaneously or surgically, as well as correction of valvular abnormalities, may be indicated. Treatment with an ICD for primary prevention of sudden death in patients with an LVEF of less than 30% that is more than 40 days post-MI is reasonable if expected survival is more than 1 year. Initial daily dose includes Lisinopril 6 mg.
+ 
+ 
+Subject,Entity Type,Entity,Standardized Text,Polarity,Value,ICD9CM,ICD10CM,CPT,HCPCS,LOINC,RXNORM
+Patient,Procedure,Treatment,Administration procedure, Therapeutic procedure,Positive,30,40,1,,,97139,,LA20296-2, LP100632-1, LP94823-9, MTHU021209, LP21090-3, MTHU021207,,
+Patient,Disease Disorder,abnormalities,Congenital Abnormality,Positive,,759.9, 740-759.99,Q89.9,,,,,
+Patient,Disease Disorder,ICD,Disruptive, Impulse Control, and Conduct Disorders,Positive,30,40,1,312.30,F63.9,,,,,
+Patient,Medication,Lisinopril,Lisinopril,Positive,6,,,,,LP171618-4,29046,
+Patient,Sign Symptom,asymptomatic,Asymptomatic,Positive,,,,,,LA6737-6,,
+Patient,Sign Symptom,death,Death (finding),Positive,30,40,1,,,,,LA18946-6, LA7424-0, LA20644-3,,
+Patient,Entity,Evaluation,Evaluation procedure, Evaluation,Positive,,,,,,LA15395-9, LP36377-7, LP21013-5,,
+Patient,Entity,surgically,Operative Surgical Procedures,Positive,,,,1003143,,LP7802-4, MTHU051608, LP209048-0, MTHU001515, LA3644-7, LP212523-7, LA14620-1, MTHU013913, LP173473-2, LP7616-8, MTHU051579, LP97910-1, LP32925-7, LP100628-9, MTHU007597, MTHU000079,,
+Patient,Entity,LVEF,Left ventricular ejection fraction,Positive,30,40,1,,,,,10230-1,,
+
+Patient has structural heart disease and current or previous symptoms of heart failure. The preventive measures include dietary sodium restriction. Drugs routinely recommended  include ACEI/ARBs, beta-blockers, and loop diuretics for fluid retention. Initial daily dose includes Perindopril 2 mg once.
+ 
+ 
+Subject,Entity Type,Entity,Standardized Text,Polarity,Value,ICD9CM,ICD10CM,CPT,HCPCS,LOINC,RXNORM
+Patient,Procedure,sodium,Sodium measurement,Positive,,,,84302, 80069, 80051, 1011684, 80048, 80047,,,,
+Patient,Disease Disorder,heart disease,Heart Diseases,Positive,,429.9,I51.9,,,LA10523-1,,
+Patient,Disease Disorder,heart,benign neoplasm of heart, Malignant neoplasm of heart,Positive,,212.7, 164.1,D15.1, C38.0,,,,,
+Patient,Disease Disorder,disease,Disease,Positive,,,,,,LP21006-9,,
+Patient,Disease Disorder,heart failure,Heart failure, Congestive heart failure,Positive,,428.9, 428, 428.0,I50.9, I50,,,MTHU020787, LA12740-9,,
+Patient,Disease Disorder,heart,benign neoplasm of heart, Malignant neoplasm of heart,Positive,,212.7, 164.1,D15.1, C38.0,,,,,
+Patient,Medication,sodium,Sodium,Positive,,,,,,MTHU003686, LP15099-2, LP32156-9,9853,
+Patient,Medication,Drugs,Pharmaceutical Preparations,Positive,,,,,,LP18046-0, MTHU044418, LA20271-5, MTHU008870, MTHU038481, LA16120-0, LP100609-9, LP116700-8,,
+Patient,Medication,beta-blockers,Adrenergic beta-Antagonists,Positive,,,,,,LP18062-7, MTHU003324,,
+Patient,Medication,diuretics,Diuretics,Positive,,,,,,LP208896-3, MTHU003217, LP18047-8,,
+Patient,Medication,Perindopril,Perindopril,Positive,2,,,,,,54552,
+Patient,Sign Symptom,symptoms,Symptoms,Positive,,780-789.99,,,,LP185406-8, MTHU048142, LP100630-5, MTHU021540,,
+Patient,Sign Symptom,fluid retention,Body fluid retention,Positive,,,R60.9,,,,,
+Patient,Entity,retention,Retention - dental,Positive,,,,,,MTHU015278,,
+
+Patient has refractory heart failure (NYHA class IV) that requires specialized interventions. Treatment considerations include heart transplantation or placement of an LV assist device in eligible patients, pulmonary catheterization. Maximum daily dose of Quinapril is 20 mg twice.
+ 
+ 
+Subject,Entity Type,Entity,Standardized Text,Polarity,Value,ICD9CM,ICD10CM,CPT,HCPCS,LOINC,RXNORM
+Patient,Procedure,Treatment,Administration procedure, Therapeutic procedure,Positive,,,,97139,,LA20296-2, MTHU021209, LP21090-3, MTHU021207, LP100632-1, LP94823-9,,
+Patient,Procedure,heart transplantation,Heart Transplantation,Positive,,37.51,,33945,,LA25532-5,,
+Patient,Procedure,transplantation,Transplantation,Positive,,,,,,LA18638-9,,
+Patient,Procedure,catheterization,Catheterization,Positive,,,,,,LA11847-3,,
+Patient,Disease Disorder,heart failure,Heart failure, Congestive heart failure,Positive,,428, 428.9, 428.0,I50.9, I50,,,MTHU020787, LA12740-9,,
+Patient,Disease Disorder,heart,benign neoplasm of heart, Malignant neoplasm of heart,Positive,,212.7, 164.1,D15.1, C38.0,,,,,
+Patient,Disease Disorder,heart,benign neoplasm of heart, Malignant neoplasm of heart,Positive,,212.7, 164.1,D15.1, C38.0,,,,,
+Patient,Medication,Quinapril,quinapril,Positive,20,,,,,LP171631-7,35208,
+Patient,Entity,interventions,Interventions:Finding:Point in time:^Patient:Narrative, Intervention regimes,Positive,,,,,,62387-6, LP111412-5, MTHU036726,,
+Patient,Entity,placement,Placement action,Positive,,,,,,LP200050-5,,
+Patient,Entity,pulmonary,Pulmonary:-:Point in time:^Patient:-,Positive,,,,,,54542-6,,
+
+Symptoms shown are fluid retention and weight gain, Loss of appetite and Abnormally slow heart rate. Patient with weakened heart, is showing symptoms for advanced heart failure. The medications include Angiotensin-converting enzyme (ACE) inhibitors or angiotensin-receptor blockers (ARBs), beta blockers and Diuretics. Initial daily dose includes Ramipril 2 mg.
+ 
+ 
+Subject,Entity Type,Entity,Standardized Text,Polarity,Value,ICD9CM,ICD10CM,CPT,HCPCS,LOINC,RXNORM
+Patient,Procedure,ACE,Angiotensin converting enzyme measurement,Positive,,,,82164,,,,
+Patient,Disease Disorder,Loss of appetite,Anorexia,Positive,,783.0,R63.0,,,,,
+Patient,Disease Disorder,heart,benign neoplasm of heart, Malignant neoplasm of heart,Positive,,212.7, 164.1,D15.1, C38.0,,,,,
+Patient,Disease Disorder,heart,benign neoplasm of heart, Malignant neoplasm of heart,Positive,,212.7, 164.1,D15.1, C38.0,,,,,
+Patient,Disease Disorder,heart failure,Heart failure, Congestive heart failure,Positive,,428.9, 428, 428.0,I50, I50.9,,,MTHU020787, LA12740-9,,
+Patient,Disease Disorder,heart,benign neoplasm of heart, Malignant neoplasm of heart,Positive,,212.7, 164.1,D15.1, C38.0,,,,,
+Patient,Medication,medications,Pharmaceutical Preparations,Positive,,,,,,LA20271-5, MTHU008870, MTHU038481, LA16120-0, LP100609-9, LP116700-8, LP18046-0, MTHU044418,,
+Patient,Medication,Angiotensin,Angiotensins,Positive,,,,,,LP40491-0,,
+Patient,Medication,enzyme,Enzymes,Positive,,,,,,LP31392-1, LP21234-7, LP21235-4,,
+Patient,Medication,angiotensin,Angiotensins,Positive,,,,,,LP40491-0,,
+Patient,Medication,receptor,receptor,Positive,,,,,,LP21071-3, LP21260-2,,
+Patient,Medication,beta blockers,Adrenergic beta-Antagonists,Positive,,,,,,LP18062-7, MTHU003324,,
+Patient,Medication,Diuretics,Diuretics,Positive,,,,,,LP18047-8, LP208896-3, MTHU003217,,
+Patient,Medication,Ramipril,Ramipril,Positive,2,,,,,LP171634-1,35296,
+Patient,Sign Symptom,Symptoms,Symptoms,Positive,,780-789.99,,,,LP185406-8, MTHU048142, LP100630-5, MTHU021540,,
+Patient,Sign Symptom,fluid retention,Body fluid retention,Positive,,,R60.9,,,,,
+Patient,Sign Symptom,weight gain,Weight Gain,Positive,,,,,,MTHU020882,,
+Patient,Sign Symptom,Loss of appetite,Loss of appetite (finding),Positive,,,,,,MTHU013520,,
+Patient,Sign Symptom,slow heart rate,Bradycardia,Positive,,,R00.1,,,LA17394-0,,
+Patient,Sign Symptom,symptoms,Symptoms,Positive,,780-789.99,,,,LP185406-8, MTHU048142, LP100630-5, MTHU021540,,
+Patient,Entity,retention,Retention - dental,Positive,,,,,,MTHU015278,,
+Patient,Entity,weight,Body weight:Mass:Point in time:^Patient:Quantitative,Positive,,,,,,29463-7,,
+Patient,Entity,heart rate,heart rate, Heart beat:Number = Count/Time:Point in time:To be specified in another part of the message:Quantitative,Positive,,,,,,MTHU003114, LP32063-7, LP91312-6, 8867-4,,
+Patient,Entity,medications,Medications:Presence or Identity:Duration of the study:^Patient:Nominal, Medications:-:Point in time:^Patient:-,Positive,,,,,,19789-7, 52471-0,,
+Patient,Entity,receptor,receptor,Positive,,,,,,LP21071-3, LP21260-2,,
+
+The muscles of the heart pumps (ventricles) have become thin and weakened. They stretch (dilate) and cannot pump the blood with enough force to reach all the body's tissues. Patient is suffering from ACC/AHA Stage A Heart failure. Maximum daily dose of Losartan 50 mg.
+ 
+ 
+Subject,Entity Type,Entity,Standardized Text,Polarity,Value,ICD9CM,ICD10CM,CPT,HCPCS,LOINC,RXNORM
+Patient,Disease Disorder,heart,benign neoplasm of heart, Malignant neoplasm of heart,Positive,,212.7, 164.1,D15.1, C38.0,,,,,
+Patient,Disease Disorder,ACC,Aplasia Cutis Congenita, Agenesis of corpus callosum,Positive,,,Q84.8, Q04.0,,,,,
+Patient,Disease Disorder,Heart failure,Heart failure, Congestive heart failure,Positive,,428, 428.9, 428.0,I50, I50.9,,,LA12740-9, MTHU020787,,
+Patient,Disease Disorder,Heart,benign neoplasm of heart, Malignant neoplasm of heart,Positive,,212.7, 164.1,D15.1, C38.0,,,,,
+Patient,Medication,AHA,acetohydroxamic acid, Alpha Hydroxy Acids,Positive,,,,,,,16728, 236797,
+Patient,Medication,Losartan,Losartan,Positive,50,,,,,LP171619-2,52175,
+Patient,Sign Symptom,dilate,Dilated,Positive,,,,,,LA19576-0,,
+Patient,Entity,force,Mechanical force,Positive,,,,,,LP6816-5,,
+
+Patient is with weakened heart muscles which cannot pump enough blood throughout the body. The left ventricle is stretched (dilated). Fluid backs up and accumulates in the lungs (pulmonary edema). Previous episode of heart attack, confirming doubt for systolic heart failure. Initial daily dose includes Valsartan 40 mg twice.
+ 
+ 
+Subject,Entity Type,Entity,Standardized Text,Polarity,Value,ICD9CM,ICD10CM,CPT,HCPCS,LOINC,RXNORM
+Patient,Disease Disorder,heart,benign neoplasm of heart, Malignant neoplasm of heart,Positive,,212.7, 164.1,D15.1, C38.0,,,,,
+Patient,Disease Disorder,pulmonary edema,Pulmonary Edema,Positive,,,J81.1, J81,,,LA7467-9,,
+Patient,Disease Disorder,heart attack,Myocardial Infarction,Positive,,,,,,LA14274-7, LP98884-7, MTHU035551, LA10558-7,,
+Patient,Disease Disorder,heart,benign neoplasm of heart, Malignant neoplasm of heart,Positive,,212.7, 164.1,D15.1, C38.0,,,,,
+Patient,Disease Disorder,systolic heart failure,Heart Failure, Systolic,Positive,,428.2, 428.20,I50.20,,,,,
+Patient,Disease Disorder,heart failure,Heart failure, Congestive heart failure,Positive,,428.9, 428, 428.0,I50, I50.9,,,MTHU020787, LA12740-9,,
+Patient,Disease Disorder,heart,benign neoplasm of heart, Malignant neoplasm of heart,Positive,,212.7, 164.1,D15.1, C38.0,,,,,
+Patient,Medication,Valsartan,valsartan,Positive,40,,,,,LP171649-9,69749,
+Patient,Sign Symptom,dilated,Dilated,Positive,,,,,,LA19576-0,,
+Patient,Sign Symptom,edema,Edema,Negative,,782.3,R60.9,,,MTHU019803, LA17263-7, LA19035-7,,
+Patient,Entity,pulmonary,Pulmonary:-:Point in time:^Patient:-,Positive,,,,,,54542-6,,
+Patient,Entity,edema,Edema:Finding:Point in time:^Patient:Ordinal,Negative,,,,,,44966-0,,
+
+Patient has a history of high blood pressure and atrial fibrillation (a disturbance in heart rhythm) and is suspected to suffer from preserved LVEF heart failure. The force of the heart muscle contractions weakened over time, and the muscles have difficulty relaxing which is preventing the normal filling of the heart with blood. Maximum daily dose of Valsartan is 160 mg twice.
+ 
+ 
+Subject,Entity Type,Entity,Standardized Text,Polarity,Value,ICD9CM,ICD10CM,CPT,HCPCS,LOINC,RXNORM
+Patient,Disease Disorder,high blood pressure,Hypertensive disease,Positive,,997.91, 401-405.99,,,,LA7444-8, MTHU020789, LA14293-7,,
+Patient,Disease Disorder,atrial fibrillation,Atrial Fibrillation,Positive,,427.31,,,,LA17084-7,,
+Patient,Disease Disorder,heart,benign neoplasm of heart, Malignant neoplasm of heart,Positive,,212.7, 164.1,D15.1, C38.0,,,,,
+Patient,Disease Disorder,heart failure,Heart failure, Congestive heart failure,Positive,,428.9, 428, 428.0,I50, I50.9,,,MTHU020787, LA12740-9,,
+Patient,Disease Disorder,heart,benign neoplasm of heart, Malignant neoplasm of heart,Positive,,212.7, 164.1,D15.1, C38.0,,,,,
+Patient,Disease Disorder,heart,benign neoplasm of heart, Malignant neoplasm of heart,Positive,,212.7, 164.1,D15.1, C38.0,,,,,
+Patient,Disease Disorder,heart,benign neoplasm of heart, Malignant neoplasm of heart,Positive,,212.7, 164.1,D15.1, C38.0,,,,,
+Patient,Medication,Valsartan,valsartan,Positive,160,,,,,LP171649-9,69749,
+Patient,Sign Symptom,history,Medical History,Positive,,,,,,LP6817-3, LP128548-7, LP91302-7, LP7800-8, MTHU040244, MTHU000077,,
+Patient,Sign Symptom,normal,Gait normal,Positive,,,,,,LA17294-2,,
+Patient,Entity,high blood pressure,Ever told by doctor or nurse that you have high blood pressure:Finding:Point in time:^Patient:Ordinal,Positive,,,,,,58295-7,,
+Patient,Entity,pressure,Pressure- physical agent,Positive,,,,,,MTHU008120, LP6847-0,,
+Patient,Entity,atrial fibrillation,Ever told you have or had atrial fibrillation:Finding:Point in time:^Patient:Ordinal,Positive,,,,,,58268-4,,
+Patient,Entity,force,Mechanical force,Positive,,,,,,LP6816-5,,
+Patient,Entity,LVEF,Left ventricular ejection fraction,Positive,,,,,,10230-1,,
+

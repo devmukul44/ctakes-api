@@ -18,7 +18,7 @@ class UMLSCodeMap @Inject() (ws: WSClient) {
     val lowerCaseEntity = entity.toLowerCase
     val stringQuery = s"SELECT code, text, source FROM umls_mrconso WHERE text LIKE '%$lowerCaseEntity%' LIMIT 20"
     val responseObject = ws
-      .url("http://localhost:9200/_sql")
+      .url("http://localhost:19200/_sql")
       .withHeaders("Content-Type" -> "text/plain")
       .post(stringQuery)
 
@@ -27,6 +27,7 @@ class UMLSCodeMap @Inject() (ws: WSClient) {
     (result(responseObject, Duration.Inf).json \ "hits" \"hits").as[List[ESResponse]].map { x =>
       val source = x._source.getOrElse("source", "")
       val code = x._source.getOrElse("code", "")
+      println(source, code)
       (source, code)
     }
   }
